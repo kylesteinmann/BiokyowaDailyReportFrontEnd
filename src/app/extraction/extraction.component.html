@@ -1,0 +1,36 @@
+<form [formGroup] = "extractionService.extractionForm" (ngSubmit)="extractionService.onSubmitExtractionForm()">
+  <label>Date:</label>
+  <input type="date" formControlName="date">
+
+  <label>Plant:</label>
+  <input type="text" formControlName="plant">
+
+  <label>Product:</label>
+  <input type="text" formControlName="product">
+
+  <label>Campaign:</label>
+  <input type="text" formControlName="campaign">
+
+  <label>Stage:</label>
+  <input type="text" formControlName="stage">
+
+  <label>Tank:</label>
+  <input type="text" formControlName="tank">
+
+  <label>Concentration:</label>
+  <input type="text" formControlName="concentration">
+
+  <label>Volume:</label>
+  <input type="text" formControlName="volume">
+
+  <label>Weight:</label>
+  <input type="text" formControlName="weight">
+
+  <label>Level Indicator:</label>
+  <input type="text" formControlName="levelIndicator">
+
+  <label>PH Level:</label>
+  <input type="text" formControlName="ph">
+
+  <button type="submit">Submit</button>
+</form>
