@@ -1,24 +1,27 @@
+import { ExtractionComponent } from './extraction/extraction.component';
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
-import { FormGroup, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
-import { ExtractionComponent } from './extraction/extraction.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ExtractionComponent,
-    FormControl,
-    FormGroup,
-    ReactiveFormsModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

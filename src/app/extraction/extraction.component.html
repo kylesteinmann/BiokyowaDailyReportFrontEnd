@@ -1,36 +1,82 @@
-<form [formGroup] = "extractionService.extractionForm" (ngSubmit)="extractionService.onSubmitExtractionForm()">
-  <label>Date:</label>
-  <input type="date" formControlName="date">
+<button *ngIf="!extractionService.newExtractionSelected"(click)="extractionService.newExtractionSelected = true">Create New Extraction</button>
 
-  <label>Plant:</label>
-  <input type="text" formControlName="plant">
+<div class="newFormContainer">
+  <form *ngIf="extractionService.newExtractionSelected" [formGroup] = "extractionService.extractionForm" (ngSubmit)="extractionService.onSubmitExtractionForm()">
+    <label>Date:</label>
+    <input type="date" formControlName="date">
 
-  <label>Product:</label>
-  <input type="text" formControlName="product">
+    <label>Plant:</label>
+    <input type="text" formControlName="plant">
 
-  <label>Campaign:</label>
-  <input type="text" formControlName="campaign">
+    <label>Product:</label>
+    <input type="text" formControlName="product">
 
-  <label>Stage:</label>
-  <input type="text" formControlName="stage">
+    <label>Campaign:</label>
+    <input type="text" formControlName="campaign">
 
-  <label>Tank:</label>
-  <input type="text" formControlName="tank">
+    <label>Stage:</label>
+    <input type="text" formControlName="stage">
 
-  <label>Concentration:</label>
-  <input type="text" formControlName="concentration">
+    <label>Tank:</label>
+    <input type="text" formControlName="tank">
 
-  <label>Volume:</label>
-  <input type="text" formControlName="volume">
+    <label>Concentration:</label>
+    <input type="text" formControlName="concentration">
 
-  <label>Weight:</label>
-  <input type="text" formControlName="weight">
+    <label>Volume:</label>
+    <input type="text" formControlName="volume">
 
-  <label>Level Indicator:</label>
-  <input type="text" formControlName="levelIndicator">
+    <label>Weight:</label>
+    <input type="text" formControlName="weight">
 
-  <label>PH Level:</label>
-  <input type="text" formControlName="ph">
+    <label>Level Indicator:</label>
+    <input type="text" formControlName="level">
 
-  <button type="submit">Submit</button>
-</form>
+    <label>PH Level:</label>
+    <input type="text" formControlName="ph">
+
+    <button type="submit">
+      {{ extractionService.newExtractionSelected ? 'Update Extraction' : 'Create Extraction' }}
+    </button>
+
+  </form>
+</div>
+
+<div >
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Plant</th>
+      <th>Product</th>
+      <th>Campaign</th>
+      <th>Stage</th>
+      <th>Tank</th>
+      <th>Concentration</th>
+      <th>Volume</th>
+      <th>Weight</th>
+      <th>Level Indicator</th>
+      <th>PH Level</th>
+    </tr>
+    <tr *ngFor="let extraction of extractionService.extractions">
+  <td>{{ extraction.date }}</td>
+  <td>{{ extraction.plant }}</td>
+  <td>{{ extraction.product }}</td>
+  <td>{{ extraction.campaign }}</td>
+  <td>{{ extraction.stage }}</td>
+  <td>{{ extraction.tank }}</td>
+  <td>{{ extraction.concentration }}</td>
+  <td>{{ extraction.volume }}</td>
+  <td>{{ extraction.weight }}</td>
+  <td>{{ extraction.level }}</td>
+  <td>{{ extraction.ph }}</td>
+  <td>
+    <button (click)="extractionService.onSelectExtraction(extraction.id)">Edit</button>
+  </td>
+  <td>
+    <button (click)="extractionService.onDeleteExtraction(extraction.id)">Delete</button>
+  </td>
+</tr>
+
+  </table>
+
+</div>
