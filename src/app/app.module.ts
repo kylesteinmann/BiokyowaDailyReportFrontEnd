@@ -1,4 +1,5 @@
 import { ExtractionComponent } from './extraction/extraction.component';
+import { ExtractionDialogComponent } from './extraction-dialog/extraction-dialog.component';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,13 +13,14 @@ import { MatInputModule } from '@angular/material/input'
 import { MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
 import { MatButtonModule,  } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-
+import {  MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExtractionComponent,
+    ExtractionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule
 
   ],
   providers: [],

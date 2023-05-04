@@ -1,92 +1,3 @@
-<div class="newFormContainer">
-  <form
-    *ngIf="extractionService.newExtractionSelected"
-    [formGroup]="extractionService.extractionForm"
-    (ngSubmit)="extractionService.onSubmitExtractionForm()"
-  >
-    <h1>Extraction Form</h1>
-    <div class="formSection">
-      <mat-form-field>
-        <mat-label>Date:</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="date" />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker1"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Plant:</mat-label>
-        <input matInput placeholder="Plant" formControlName="plant" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Product:</mat-label>
-        <input matInput placeholder="Product" formControlName="product" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Campaign:</mat-label>
-        <input matInput placeholder="Campaign" formControlName="campaign" />
-      </mat-form-field>
-    </div>
-
-    <div class="formSection">
-      <mat-form-field>
-        <mat-label>Stage:</mat-label>
-        <input matInput placeholder="Stage" formControlName="stage" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Tank:</mat-label>
-        <input matInput placeholder="Tank" formControlName="tank" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Concentration:</mat-label>
-        <input
-          matInput
-          placeholder="Concentration"
-          formControlName="concentration"
-        />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Volume:</mat-label>
-        <input matInput placeholder="Volume" formControlName="volume" />
-      </mat-form-field>
-    </div>
-
-    <div class="formSection">
-      <mat-form-field>
-        <mat-label>Weight:</mat-label>
-        <input matInput placeholder="Weight" formControlName="weight" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Level Indicator:</mat-label>
-        <input matInput placeholder="Level Indicator" formControlName="level" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>PH Level:</mat-label>
-        <input matInput placeholder="PH Level" formControlName="ph" />
-      </mat-form-field>
-
-      <div class="submitButton">
-        <button mat-raised-button color="primary" type="submit">
-          {{
-            extractionService.newExtractionSelected
-              ? "Update Extraction"
-              : "Create Extraction"
-          }}
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
-
 <div class="tableContainer">
   <table>
     <tr>
@@ -103,46 +14,35 @@
       <th class="tableHeader">PH Level</th>
       <div class="newExtractionButton">
 
-        <button
-          mat-icon-button
-          color="primary"
-          *ngIf="!extractionService.newExtractionSelected"
-          (click)="extractionService.newExtractionSelected = true"
-        >
+        <button mat-icon-button color="primary"
+          (click)="extractionService.openDialog(); extractionService.newExtractionSelected=true">
           <mat-icon>add</mat-icon>
         </button>
       </div>
     </tr>
     <tr *ngFor="let extraction of extractionService.extractions">
 
-        <td class="tableContents">{{ extraction.date }}</td>
-        <td class="tableContents">{{ extraction.plant }}</td>
-        <td class="tableContents">{{ extraction.product }}</td>
-        <td class="tableContents">{{ extraction.campaign }}</td>
-        <td class="tableContents">{{ extraction.stage }}</td>
-        <td class="tableContents">{{ extraction.tank }}</td>
-        <td class="tableContents">{{ extraction.concentration }}</td>
-        <td class="tableContents">{{ extraction.volume }}</td>
-        <td class="tableContents">{{ extraction.weight }}</td>
-        <td class="tableContents">{{ extraction.level }}</td>
-        <td class="tableContents">{{ extraction.ph }}</td>
-        <td >
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="extractionService.onSelectExtraction(extraction.id)"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
+      <td class="tableContents">{{ extraction.date }}</td>
+      <td class="tableContents">{{ extraction.plant }}</td>
+      <td class="tableContents">{{ extraction.product }}</td>
+      <td class="tableContents">{{ extraction.campaign }}</td>
+      <td class="tableContents">{{ extraction.stage }}</td>
+      <td class="tableContents">{{ extraction.tank }}</td>
+      <td class="tableContents">{{ extraction.concentration }}</td>
+      <td class="tableContents">{{ extraction.volume }}</td>
+      <td class="tableContents">{{ extraction.weight }}</td>
+      <td class="tableContents">{{ extraction.level }}</td>
+      <td class="tableContents">{{ extraction.ph }}</td>
+      <td class="icons">
+        <button mat-icon-button color="primary"
+          (click)="extractionService.selectedExtractionId = extraction.id; extractionService.onSelectExtraction(extraction.id); extractionService.openDialog(); ">
+          <mat-icon>edit</mat-icon>
+        </button>
 
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="extractionService.onDeleteExtraction(extraction.id)"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
+        <button mat-icon-button color="primary" (click)="extractionService.onDeleteExtraction(extraction.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
 
     </tr>
   </table>

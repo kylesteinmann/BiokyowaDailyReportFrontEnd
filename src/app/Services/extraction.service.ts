@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Extraction } from '../Models/extraction';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { ExtractionDialogComponent } from '../extraction-dialog/extraction-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,11 @@ export class ExtractionService {
   newExtractionSelected: boolean = false;
   extractions: Extraction[] = []
   selectedExtractionId: string = '';
+  dialogRef: any;
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, public dialog: MatDialog) {
     this.extractionForm = new FormGroup({
+
       date: new FormControl(),
       plant: new FormControl(),
       product: new FormControl(),
@@ -38,20 +42,22 @@ export class ExtractionService {
 
   onSubmitExtractionForm() {
     if (this.newExtractionSelected) {
+
       this.http
         .post<Extraction>('http://localhost:3000/extractions', this.extractionForm.value)
         .subscribe((data: any) => {
           this.extractions.push(data);
-          this.extractionForm.reset();
           this.newExtractionSelected = false;
-
+          this.dialog.closeAll()
         });
     } else {
+
       this.http
         .put('http://localhost:3000/extractions/' + this.selectedExtractionId, this.extractionForm.value)
         .subscribe(() => {
           this.getExtractions();
           this.newExtractionSelected = false;
+          this.dialog.closeAll()
         });
     }
   }
@@ -60,6 +66,7 @@ export class ExtractionService {
   onEditExtraction(extractionId:string) {
     this.http.put('http://localhost:3000/extractions/' + extractionId, this.extractionForm.value).subscribe(() => {
       this.getExtractions();
+      this.newExtractionSelected = false;
     })
   }
 
@@ -72,6 +79,7 @@ export class ExtractionService {
   onSelectExtraction(id: string) {
   this.http.get<Extraction>('http://localhost:3000/extractions/' + id).subscribe((data: Extraction) => {
     this.extractionForm.setValue({
+      id: data.id,
       date: data.date,
       plant: data.plant,
       product: data.product,
@@ -87,6 +95,12 @@ export class ExtractionService {
     this.newExtractionSelected = true;
   });
 }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ExtractionDialogComponent, {
+      width: '500px'
+    });
+  }
 
 }
 
