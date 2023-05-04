@@ -12,6 +12,15 @@ export class ExtractionComponent {
 
    }
 
-
-
+  sortTable(column: string) {
+    this.extractionService.extractions.sort((a, b) => {
+      if (a[column] < b[column]) {
+        return -1;
+      }
+      if (a[column] > b[column]) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 }

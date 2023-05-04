@@ -13,6 +13,7 @@ export class Extraction {
   weight: number;
   level: number;
   ph: number;
+  [key: string]: any;
 
     constructor( id = '',
       date = new Date(),
