@@ -15,7 +15,7 @@ export class ExtractionService {
   selectedExtractionId: string = '';
   dialogRef: any;
 
-  constructor(private http:HttpClient, public dialog: MatDialog) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
     this.extractionForm = new FormGroup({
 
       date: new FormControl(),
@@ -35,14 +35,13 @@ export class ExtractionService {
   }
 
   getExtractions() {
-    this.http.get<Extraction>('http://localhost:3000/extractions').subscribe((data:any) => {
+    this.http.get<Extraction>('http://localhost:3000/extractions').subscribe((data: any) => {
       this.extractions = data;
     })
   }
 
   onSubmitExtractionForm() {
     if (this.newExtractionSelected) {
-
       this.http
         .post<Extraction>('http://localhost:3000/extractions', this.extractionForm.value)
         .subscribe((data: any) => {
@@ -51,7 +50,6 @@ export class ExtractionService {
           this.dialog.closeAll()
         });
     } else {
-
       this.http
         .put('http://localhost:3000/extractions/' + this.selectedExtractionId, this.extractionForm.value)
         .subscribe(() => {
@@ -60,41 +58,33 @@ export class ExtractionService {
           this.dialog.closeAll()
         });
     }
+    this.extractionForm.reset()
   }
 
 
-  onEditExtraction(extractionId:string) {
+  onEditExtraction(extractionId: string) {
+    this.selectedExtractionId = extractionId;
     this.http.put('http://localhost:3000/extractions/' + extractionId, this.extractionForm.value).subscribe(() => {
       this.getExtractions();
       this.newExtractionSelected = false;
     })
   }
 
+
   onDeleteExtraction(extractionId: string) {
-    this.http.delete<Extraction>('http://localhost:3000/extractions/' + extractionId).subscribe((data:any) => {
+    this.http.delete<Extraction>('http://localhost:3000/extractions/' + extractionId).subscribe((data: any) => {
       this.getExtractions();
     })
   }
 
   onSelectExtraction(id: string) {
-  this.http.get<Extraction>('http://localhost:3000/extractions/' + id).subscribe((data: Extraction) => {
-    this.extractionForm.setValue({
-      id: data.id,
-      date: data.date,
-      plant: data.plant,
-      product: data.product,
-      campaign: data.campaign,
-      stage: data.stage,
-      tank: data.tank,
-      concentration: data.concentration,
-      volume: data.volume,
-      weight: data.weight,
-      level: data.level,
-      ph: data.ph
+    this.http.get<Extraction>('http://localhost:3000/extractions/' + id).subscribe((data: Extraction) => {
+      this.extractionForm.patchValue(data);
+      this.newExtractionSelected = false;
     });
-    this.newExtractionSelected = true;
-  });
-}
+  }
+
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ExtractionDialogComponent, {
