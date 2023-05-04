@@ -7,9 +7,9 @@
       <th class="tableHeader" (click)="sortTable('campaign')">Campaign</th>
       <th class="tableHeader">Stage</th>
       <th class="tableHeader">Tank</th>
-      <th class="tableHeader">Concentration</th>
-      <th class="tableHeader">Volume</th>
-      <th class="tableHeader">Weight</th>
+      <th class="tableHeader">Concentration(g/l)</th>
+      <th class="tableHeader">Volume(gal)</th>
+      <th class="tableHeader">Weight(kg)</th>
       <th class="tableHeader">Level Indicator</th>
       <th class="tableHeader">PH Level</th>
       <div class="newExtractionButton">
@@ -22,17 +22,17 @@
     </tr>
     <tr *ngFor="let extraction of extractionService.extractions">
 
-      <td class="tableContents">{{ extraction.date }}</td>
+      <td class="tableContents">{{ extraction.date | date:'longDate'}}</td>
       <td class="tableContents">{{ extraction.plant }}</td>
       <td class="tableContents">{{ extraction.product }}</td>
       <td class="tableContents">{{ extraction.campaign }}</td>
       <td class="tableContents">{{ extraction.stage }}</td>
       <td class="tableContents">{{ extraction.tank }}</td>
-      <td class="tableContents">{{ extraction.concentration }}</td>
-      <td class="tableContents">{{ extraction.volume }}</td>
-      <td class="tableContents">{{ extraction.weight }}</td>
-      <td class="tableContents">{{ extraction.level }}</td>
-      <td class="tableContents">{{ extraction.ph }}</td>
+      <td class="tableContents">{{ extraction.concentration | number}}</td>
+      <td class="tableContents">{{ extraction.volume | number}}</td>
+      <td class="tableContents">{{ extraction.weight | number}}</td>
+      <td class="tableContents">{{ extraction.level | number}}%</td>
+      <td class="tableContents">{{ extraction.ph | number}}</td>
       <td class="icons">
         <button mat-icon-button color="primary"
           (click)="extractionService.selectedExtractionId = extraction.id; extractionService.onSelectExtraction(extraction.id); extractionService.openDialog(); ">
