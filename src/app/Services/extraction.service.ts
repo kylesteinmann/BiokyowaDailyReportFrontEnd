@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Extraction } from '../Models/extraction';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { ExtractionDialogComponent } from '../extraction-dialog/extraction-dialog.component';
+import { ExtractionDialogComponent } from '../Components/extraction-dialog/extraction-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +61,6 @@ export class ExtractionService {
     this.extractionForm.reset()
   }
 
-
   onEditExtraction(extractionId: string) {
     this.selectedExtractionId = extractionId;
     this.http.put('http://localhost:3000/extractions/' + extractionId, this.extractionForm.value).subscribe(() => {
@@ -69,7 +68,6 @@ export class ExtractionService {
       this.newExtractionSelected = false;
     })
   }
-
 
   onDeleteExtraction(extractionId: string) {
     this.http.delete<Extraction>('http://localhost:3000/extractions/' + extractionId).subscribe((data: any) => {
@@ -84,10 +82,8 @@ export class ExtractionService {
     });
   }
 
-
-
   openDialog(): void {
-    const dialogRef = this.dialog.open(ExtractionDialogComponent, {
+    this.dialog.open(ExtractionDialogComponent, {
       width: '500px'
     });
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExtractionService } from '../Services/extraction.service';
+import { ExtractionService } from '../../Services/extraction.service';
 
 @Component({
   selector: 'app-extraction',
@@ -10,7 +10,7 @@ export class ExtractionComponent {
 
   constructor(public extractionService: ExtractionService) {
 
-   }
+  }
 
   sortTable(column: string) {
     this.extractionService.extractions.sort((a, b) => {

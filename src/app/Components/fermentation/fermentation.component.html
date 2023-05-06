@@ -1,0 +1,45 @@
+<div class="tableContainer">
+  <table>
+    <tr>
+      <th class="tableHeader" (click)="sortTable('date')">Date</th>
+      <th class="tableHeader" (click)="sortTable('plant')">Plant</th>
+      <th class="tableHeader" (click)="sortTable('product')">Product</th>
+      <th class="tableHeader" (click)="sortTable('campaign')">Campaign</th>
+      <th class="tableHeader">Stage</th>
+      <th class="tableHeader">Tank</th>
+      <th class="tableHeader">Weight(kg)</th>
+      <th class="tableHeader">Level Indicator</th>
+      <th class="tableHeader">Received</th>
+      <div class="newFermentationButton">
+
+        <button mat-icon-button color="primary"
+          (click)="fermentationService.openDialog(); fermentationService.newFermentationSelected=true">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </tr>
+    <tr *ngFor="let fermentation of fermentationService.fermentations">
+
+      <td class="tableContents">{{fermentation.date | date:'longDate'}}</td>
+      <td class="tableContents">{{fermentation.plant }}</td>
+      <td class="tableContents">{{fermentation.product }}</td>
+      <td class="tableContents">{{fermentation.campaign }}</td>
+      <td class="tableContents">{{fermentation.stage }}</td>
+      <td class="tableContents">{{fermentation.tank }}</td>
+      <td class="tableContents">{{fermentation.weight | number}}</td>
+      <td class="tableContents">{{fermentation.level | number}}%</td>
+      <td class="tableContents">{{fermentation.received | number}}</td>
+      <td class="icons">
+        <button mat-icon-button color="primary"
+          (click)="fermentationService.selectedFermentationId = fermentation.id; fermentationService.onSelectFermentation(fermentation.id); fermentationService.openDialog(); ">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="fermentationService.onDeleteFermentation(fermentation.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+
+    </tr>
+  </table>
+</div>

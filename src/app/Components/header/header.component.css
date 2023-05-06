@@ -1,0 +1,9 @@
+img {
+  width:100px;
+}
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  margin-bottom: 20px;
+}

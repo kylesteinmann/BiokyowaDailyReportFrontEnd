@@ -1,0 +1,70 @@
+<div class="newFormContainer">
+  <form [formGroup]="fermentationService.fermentationForm" (ngSubmit)="fermentationService.onSubmitFermentationForm()">
+    <h1>Fermentation Form</h1>
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Date:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Plant:</mat-label>
+        <input matInput formControlName="plant" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Product:</mat-label>
+        <input matInput formControlName="product" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Campaign:</mat-label>
+        <input matInput formControlName="campaign" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Stage:</mat-label>
+        <input matInput formControlName="stage" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tank:</mat-label>
+        <input matInput formControlName="tank" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Weight:</mat-label>
+        <input matInput formControlName="weight" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Level Indicator:</mat-label>
+        <input matInput formControlName="level" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Received:</mat-label>
+        <input matInput formControlName="received" />
+      </mat-form-field>
+
+      <div class="fermentationFormButtons">
+        <button mat-raised-button color="primary" type="submit" class="submitButton">
+          {{ fermentationService.newFermentationSelected ? "Update Fermentation" : "Create Fermentaion" }}
+        </button>
+
+        <button mat-raised-button color="primary" type="button" (click)="onCancel()">Cancel</button>
+
+      </div>
+    </div>
+  </form>
+</div>
