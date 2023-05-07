@@ -7,9 +7,9 @@
       <th class="tableHeader" (click)="sortTable('campaign')">Campaign</th>
       <th class="tableHeader">Stage</th>
       <th class="tableHeader">Tank</th>
-      <th class="tableHeader">Weight(kg)</th>
       <th class="tableHeader">Level Indicator</th>
-      <th class="tableHeader">Received</th>
+      <th class="tableHeader">Weight(lbs)</th>
+      <th class="tableHeader">Received (lbs)</th>
       <div class="newFermentationButton">
 
         <button mat-icon-button color="primary"
@@ -26,8 +26,8 @@
       <td class="tableContents">{{fermentation.campaign }}</td>
       <td class="tableContents">{{fermentation.stage }}</td>
       <td class="tableContents">{{fermentation.tank }}</td>
-      <td class="tableContents">{{fermentation.weight | number}}</td>
       <td class="tableContents">{{fermentation.level | number}}%</td>
+      <td class="tableContents">{{fermentation.weight | number}}</td>
       <td class="tableContents">{{fermentation.received | number}}</td>
       <td class="icons">
         <button mat-icon-button color="primary"

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FermentationComponent } from './Components/fermentation/fermentation.component';
 import { FermentationDialogComponent } from './Components/fermentation-dialog/fermentation-dialog.component';
+import { SummaryComponent } from './Components/summary/summary.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FooterComponent } from './Components/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
     HeaderComponent,
     FooterComponent,
     FermentationComponent,
-    FermentationDialogComponent
+    FermentationDialogComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatDialogModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    NgChartsModule
 
 
 
