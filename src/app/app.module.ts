@@ -1,6 +1,11 @@
-import { ExtractionComponent } from './extraction/extraction.component';
-import { ExtractionDialogComponent } from './extraction-dialog/extraction-dialog.component';
+import { ExtractionComponent } from './Components/extraction/extraction.component';
+import { ExtractionDialogComponent } from './Components/extraction-dialog/extraction-dialog.component';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { FermentationComponent } from './Components/fermentation/fermentation.component';
+import { FermentationDialogComponent } from './Components/fermentation-dialog/fermentation-dialog.component';
+import { SummaryComponent } from './Components/summary/summary.component';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,13 +15,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { MatDatepickerModule} from '@angular/material/datepicker'
+import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
-import { MatButtonModule,  } from '@angular/material/button';
-import {  MatIconModule } from '@angular/material/icon';
+import { MatButtonModule, } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignupComponent } from './auth/signup/signup.component';
-import { NavComponent } from './shared/nav/nav.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FooterComponent } from './Components/footer/footer.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -24,7 +33,11 @@ import { NavComponent } from './shared/nav/nav.component';
     ExtractionComponent,
     ExtractionDialogComponent,
     SignupComponent,
-    NavComponent
+    HeaderComponent,
+    FooterComponent,
+    FermentationComponent,
+    FermentationDialogComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +53,10 @@ import { NavComponent } from './shared/nav/nav.component';
     MatNativeDateModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
-
+    MatDialogModule,
+    MatToolbarModule,
+    MatMenuModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,59 @@
+<div class="Containter">
+  <h1>Fermentation</h1>
+  <div class="chartsContainer">
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationLevelChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationWeightChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationReceivedChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+  </div>
+</div>
+
+<div class="Containter">
+  <h1>Extraction</h1>
+  <div class="chartsContainer">
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'"
+        [data]="summaryService.extractionConcentrationChartData" [options]="summaryService.ChartOptions"
+        [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionVolumeChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionWeightChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionLevelChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionPhChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>
