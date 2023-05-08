@@ -15,12 +15,16 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatButtonModule,  } from '@angular/material/button';
 import {  MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SignupComponent } from './auth/signup/signup.component';
+import { NavComponent } from './shared/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExtractionComponent,
-    ExtractionDialogComponent
+    ExtractionDialogComponent,
+    SignupComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
