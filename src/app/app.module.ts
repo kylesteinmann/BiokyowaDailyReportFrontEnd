@@ -1,6 +1,3 @@
-import { ExtractionComponent } from './extraction/extraction.component';
-import { ExtractionDialogComponent } from './extraction-dialog/extraction-dialog.component';
-import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,9 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ExtractionComponent,
-    ExtractionDialogComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
