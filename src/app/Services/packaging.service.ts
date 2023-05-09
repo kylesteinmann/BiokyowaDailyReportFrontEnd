@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Packaging } from '../Models/packaging';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { PackagingDialogComponent } from '../packaging-dialog/packaging-dialog.component';
+import { PackagingDialogComponent } from '../Components/packaging-dialog/packaging-dialog.component';
 
 @Injectable({
   providedIn: 'root'
