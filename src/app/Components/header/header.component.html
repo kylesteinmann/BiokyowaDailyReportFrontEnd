@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <img src="/assets/BioKyowaLogo.png" alt="BioKyowa Logo">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+    [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/fermentation">Fermentaiton Report</button>
+  <button mat-menu-item routerLink="/extraction">Extraction Report</button>
+  <button mat-menu-item >Packaging Report</button>
+  <button mat-menu-item routerLink="/summary">Reports Summary</button>
+  <button mat-menu-item routerLink="/">Log Out</button>
+</mat-menu>
