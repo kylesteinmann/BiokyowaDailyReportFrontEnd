@@ -22,7 +22,7 @@ export class PackagingService {
       plant: new FormControl(),
       product: new FormControl(),
       campaign: new FormControl(),
-      package: new FormControl(),
+      packages: new FormControl(),
       incoming: new FormControl(),
       outgoing: new FormControl(),
     })
