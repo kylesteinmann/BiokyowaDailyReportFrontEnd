@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,13 +18,13 @@ export class SignupComponent {
     password_confirmation: new FormControl('')
   })
 
-  constructor(private http:HttpClient){}
+  constructor(private authService:AuthService){}
 
   onSubmit(){
    const blog = this.signupForm.value;
 
-    this.http.post("http://localhost:3000/api/v1/users/create", blog).subscribe(
-      (res:any)=>(console.log(res))
+    this.authService.signup(blog).subscribe(
+      (res:any)=>{console.log(res)}
     )
   }
 }

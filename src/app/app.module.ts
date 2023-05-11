@@ -26,6 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FooterComponent } from './Components/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgChartsModule } from 'ng2-charts';
     FooterComponent,
     FermentationComponent,
     FermentationDialogComponent,
-    SummaryComponent
+    SummaryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
