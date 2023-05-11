@@ -57,3 +57,21 @@
     </div>
   </div>
 </div>
+
+<div class="Containter">
+  <h1>Packaging</h1>
+  <div class="chartsContainer">
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.packagingIncomingChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+
+    <div style="display: block;">
+      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.packagingOutgoingChartData"
+        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+      </canvas>
+    </div>
+  </div>
+</div>

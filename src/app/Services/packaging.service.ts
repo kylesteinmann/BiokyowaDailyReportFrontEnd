@@ -83,7 +83,7 @@ export class PackagingService {
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PackagingDialogComponent, {
+    this.dialog.open(PackagingDialogComponent, {
       width: '500px'
     });
   }

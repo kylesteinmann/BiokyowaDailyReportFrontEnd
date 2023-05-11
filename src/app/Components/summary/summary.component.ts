@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SummaryService } from 'src/app/Services/summary.service';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -7,22 +7,15 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css']
 })
-export class SummaryComponent {
+export class SummaryComponent implements OnInit {
   @ViewChild(BaseChartDirective, { static: false }) chart!: BaseChartDirective;
 
   constructor(public summaryService: SummaryService) {
-    this.summaryService.getExtractionData().then(() => {
-      if (this.chart !== undefined) {
-        this.chart.update();
-      }
-    });
+  }
 
-    this.summaryService.getFermentationData().then(() => {
-      if (this.chart !== undefined) {
-        this.chart.update();
-      }
-
-    });
-
+  ngOnInit(): void {
+    this.summaryService.getExtractionData()
+    this.summaryService.getFermentationData()
+    this.summaryService.getPackagingData()
   }
 }
