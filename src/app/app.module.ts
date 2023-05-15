@@ -2,6 +2,7 @@ import { ExtractionComponent } from './extraction/extraction.component';
 import { ExtractionDialogComponent } from './extraction-dialog/extraction-dialog.component';
 import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
+import { AlertModule } from './_alert';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,7 @@ import { NgChartsModule } from 'ng2-charts';
   ],
   imports: [
     BrowserModule,
+    AlertModule,
     AppRoutingModule,
     ReactiveFormsModule,
     CommonModule,
