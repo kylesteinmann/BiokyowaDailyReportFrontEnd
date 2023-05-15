@@ -1,6 +1,13 @@
-import { ExtractionComponent } from './extraction/extraction.component';
-import { ExtractionDialogComponent } from './extraction-dialog/extraction-dialog.component';
+import { ExtractionComponent } from './Components/extraction/extraction.component';
+import { ExtractionDialogComponent } from './Components/extraction-dialog/extraction-dialog.component';
 import { AppComponent } from './app.component';
+import { PackagingComponent } from './Components/packaging/packaging.component';
+import { FermentationComponent } from './Components/fermentation/fermentation.component';
+import { FermentationDialogComponent } from './Components/fermentation-dialog/fermentation-dialog.component';
+import { PackagingDialogComponent } from './Components/packaging-dialog/packaging-dialog.component';
+import { SummaryComponent } from './Components/summary/summary.component';
+import { HeaderComponent } from './Components/header/header.component';
+
 import { NgModule } from '@angular/core';
 import { AlertModule } from './_alert';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,15 +24,21 @@ import { MatButtonModule, } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FooterComponent } from './Components/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ExtractionComponent,
-    ExtractionDialogComponent
+    ExtractionDialogComponent,
+    PackagingComponent,
+    FermentationComponent,
+    FermentationDialogComponent,
+    PackagingDialogComponent,
+    SummaryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

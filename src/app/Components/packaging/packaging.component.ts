@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PackagingService} from '../Services/packaging.service';
+import { PackagingService } from '../../Services/packaging.service';
 
 @Component({
   selector: 'app-packaging',
@@ -10,7 +10,7 @@ export class PackagingComponent {
 
   constructor(public packagingService: PackagingService) {
 
-   }
+  }
 
   sortTable(column: string) {
     this.packagingService.packagings.sort((a, b) => {
