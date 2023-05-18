@@ -1,59 +1,98 @@
-<div class="Containter">
-  <h1>Fermentation</h1>
-  <div class="chartsContainer">
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationLevelChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
-    </div>
+<div class="radialContainer">
+  <h3>Categories: </h3>
+  <div>
+    <label>
+      <input type="radio" name="options" value="fermentation" [(ngModel)]="summaryService.selectedOption">
+      Fermentation
+    </label>
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationWeightChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
-    </div>
+    <label>
+      <input type="radio" name="options" value="extraction" [(ngModel)]="summaryService.selectedOption">
+      Extraction
+    </label>
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationReceivedChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
-    </div>
-
+    <label>
+      <input type="radio" name="options" value="packaging" [(ngModel)]="summaryService.selectedOption">
+      Packaging
+    </label>
   </div>
 </div>
+<div class="container">
+  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'fermentation'">>
+    <h1>Fermentation</h1>
+    <div class="chartsContainer">
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationLevelChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
 
-<div class="Containter">
-  <h1>Extraction</h1>
-  <div class="chartsContainer">
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'"
-        [data]="summaryService.extractionConcentrationChartData" [options]="summaryService.ChartOptions"
-        [legend]="summaryService.ChartLegend">
-      </canvas>
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationWeightChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationReceivedChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
     </div>
+  </div>
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionVolumeChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
+  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'extraction'">
+    <h1>Extraction</h1>
+    <div class="chartsContainer">
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'"
+          [data]="summaryService.extractionConcentrationChartData" [options]="summaryService.ChartOptions"
+          [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionVolumeChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionWeightChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionLevelChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionPhChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
     </div>
+  </div>
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionWeightChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
-    </div>
+  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'packaging'">
+    <h1>Packaging</h1>
+    <div class="chartsContainer">
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionLevelChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
-    </div>
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.packagingIncomingChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
 
-    <div style="display: block;">
-      <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.extractionPhChartData"
-        [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-      </canvas>
+      <div style="display: block;">
+        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.packagingOutgoingChartData"
+          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+        </canvas>
+      </div>
     </div>
   </div>
 </div>

@@ -1,10 +1,12 @@
 import { ExtractionComponent } from './Components/extraction/extraction.component';
 import { ExtractionDialogComponent } from './Components/extraction-dialog/extraction-dialog.component';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Components/header/header.component';
+import { PackagingComponent } from './Components/packaging/packaging.component';
 import { FermentationComponent } from './Components/fermentation/fermentation.component';
 import { FermentationDialogComponent } from './Components/fermentation-dialog/fermentation-dialog.component';
+import { PackagingDialogComponent } from './Components/packaging-dialog/packaging-dialog.component';
 import { SummaryComponent } from './Components/summary/summary.component';
+import { HeaderComponent } from './Components/header/header.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,23 +25,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SignupComponent } from './auth/signup/signup.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FooterComponent } from './Components/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
 import { LoginComponent } from './auth/login/login.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ExtractionComponent,
     ExtractionDialogComponent,
-    SignupComponent,
-    HeaderComponent,
-    FooterComponent,
+    PackagingComponent,
     FermentationComponent,
     FermentationDialogComponent,
+    PackagingDialogComponent,
     SummaryComponent,
-    LoginComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
