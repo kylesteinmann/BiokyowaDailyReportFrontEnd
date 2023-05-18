@@ -10,7 +10,7 @@ import { Packaging } from '../Models/packaging';
 })
 export class SummaryService {
   summaryTitle = 'Reports Summary';
-
+  selectedOption = 'fermentation';
   public ChartOptions: ChartOptions<'line'> = {
     responsive: false
   };
