@@ -1,0 +1,72 @@
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px
+}
+
+.formSection {
+  display:flex;
+  justify-content: space-between;
+  align-items: space-between;
+  flex-direction: row;
+  width:auto;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field{
+  padding:0 10px
+}
+
+.newExtractionButton {
+  display: flex;
+  justify-content: center;
+  transform:scale(1.5);
+}
+
+.tableContents {
+  text-align: center;
+  padding: 0 5px;
+  border-top:1px solid black;
+  padding:3px;
+}
+
+table {
+  border:1px solid black;
+  border-radius:10px;
+  padding-left:20px;
+}
+
+.tableContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px
+}
+
+button {
+  margin: 0 5px
+}
+
+.tableHeader {
+  padding:0 5px;
+  color:#1b5e20
+}
+
+button {
+  padding: 2px;
+  margin: 3px;
+
+}
+.tableRow {
+  border-top: 1px solid black;
+}

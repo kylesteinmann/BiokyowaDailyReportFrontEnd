@@ -1,0 +1,58 @@
+<div class="newFormContainer">
+  <form [formGroup]="packagingService.packagingForm" (ngSubmit)="packagingService.onSubmitPackagingForm()">
+    <h1>Packaging Form</h1>
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Date:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Plant:</mat-label>
+        <input matInput formControlName="plant" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Product:</mat-label>
+        <input matInput formControlName="product" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Campaign:</mat-label>
+        <input matInput formControlName="campaign" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Package:</mat-label>
+        <input matInput formControlName="packages" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Incoming Amount:</mat-label>
+        <input matInput formControlName="incoming" />
+      </mat-form-field>
+    </div>
+
+    <div class="formSection">
+      <mat-form-field>
+        <mat-label>Outgoing Amount:</mat-label>
+        <input matInput formControlName="outgoing" />
+      </mat-form-field>
+
+      <div class="packagingFormButtons">
+        <button mat-raised-button color="primary" type="submit" class="submitButton">
+          {{ packagingService.newPackagingSelected ? "Update Packaging" : "Create Packaging" }}
+        </button>
+
+        <button mat-raised-button color="primary" type="button" (click)="onCancel()">Cancel</button>
+
+      </div>
+    </div>
+  </form>
+</div>

@@ -45,6 +45,8 @@ export class ExtractionService {
       this.http
         .post<Extraction>('http://localhost:3000/extractions', this.extractionForm.value)
         .subscribe((data: any) => {
+
+
           this.extractions.push(data);
           this.newExtractionSelected = false;
           this.dialog.closeAll()
