@@ -40,7 +40,9 @@ import { LoginComponent } from './auth/login/login.component';
     FermentationDialogComponent,
     PackagingDialogComponent,
     SummaryComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { LoginComponent } from './auth/login/login.component';
     MatDialogModule,
     MatToolbarModule,
     MatMenuModule,
-    NgChartsModule
+    NgChartsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
