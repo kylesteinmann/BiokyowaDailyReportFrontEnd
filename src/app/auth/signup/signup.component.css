@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-.formSection {
+.formSection, .signUpButton {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -33,15 +33,7 @@ mat-form-field{
   width: 225px;
 
 }
-.signUpButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 225px;
-  height: 2em;
-  padding-left: 7em;
-  padding-top: 1em;
-}
+
 
 .submitButton {
   justify-self: center;
@@ -51,4 +43,8 @@ mat-form-field{
   display: flex;
   justify-content: center;
   padding-top: 1em;
+}
+
+.emailField {
+  width:100%
 }

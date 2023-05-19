@@ -1,47 +1,42 @@
 <h1 class="text-center">Sign Up</h1>
-<div class = "signUpContainer">
+<div class="signUpContainer">
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div class = "formSection">
+    <div class="formSection">
       <mat-form-field>
         <mat-label>First Name</mat-label>
-        <input matInput formControlName="first_name"
-        id="first_name">
+        <input matInput formControlName="first_name" id="first_name">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Last Name</mat-label>
-        <input matInput formControlName="last_name"
-        id="last_name">
-     </mat-form-field>
+        <input matInput formControlName="last_name" id="last_name">
+      </mat-form-field>
     </div>
-    <div class = "formSection2">
-      <mat-form-field>
+    <div class="formSection2">
+      <mat-form-field class="emailField">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email"
-        id="email">
+        <input matInput formControlName="email" id="email">
       </mat-form-field>
     </div>
-    <div class = "formSection">
-     <mat-form-field>
+    <div class="formSection">
+      <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password"
-       id="password">
-     </mat-form-field>
+        <input matInput type="password" formControlName="password" id="password">
+      </mat-form-field>
 
-     <mat-form-field>
+      <mat-form-field>
         <mat-label>Password Confirmation</mat-label>
-        <input matInput type="password" formControlName="password_confirmation"
-        id="password_confirmation">
+        <input matInput type="password" formControlName="password_confirmation" id="password_confirmation">
       </mat-form-field>
     </div>
 
-      <div class = signUpButton>
-        <button mat-raised-button color="primary" mat-raised-button type="submit" class="submitButton">Sign Up</button>
-      </div>
+    <div class=signUpButton>
+      <button mat-raised-button color="primary" mat-raised-button type="submit" class="submitButton">Sign Up</button>
+    </div>
 
-      <div class = "text-center2">
-        <p>Already have an account? <a href="/login"> Login</a></p>
-      </div>
+    <div class="text-center2">
+      <p>Already have an account? <a href="/login"> Login</a></p>
+    </div>
 
   </form>
 </div>

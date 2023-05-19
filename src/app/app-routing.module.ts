@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'fermentation', component: FermentationComponent },
   { path: 'summary', component: SummaryComponent },
   { path: 'packaging', component: PackagingComponent },
-
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
