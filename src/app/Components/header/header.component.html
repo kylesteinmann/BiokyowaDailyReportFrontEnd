@@ -11,5 +11,7 @@
   <button mat-menu-item routerLink="/extraction">Extraction Report</button>
   <button mat-menu-item routerLink="/packaging">Packaging Report</button>
   <button mat-menu-item routerLink="/summary">Reports Summary</button>
-  <button mat-menu-item routerLink="/">Log Out</button>
+  <button mat-menu-item *ngIf="!currentUser" routerLink="/login">Login</button>
+  <button mat-menu-item *ngIf="!currentUser" routerLink="/signup">Signup</button>
+  <button mat-menu-item *ngIf="currentUser" (click)="onLogout()">Log Out</button>
 </mat-menu>
