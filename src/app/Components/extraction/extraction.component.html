@@ -40,7 +40,8 @@
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="primary" (click)="extractionService.onDeleteExtraction(extraction.id)">
+        <button mat-icon-button color="primary" *ngIf="userService.userRole() == 'manager'"
+          (click)="extractionService.onDeleteExtraction(extraction.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

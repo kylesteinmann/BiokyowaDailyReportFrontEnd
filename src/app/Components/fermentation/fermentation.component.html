@@ -37,7 +37,8 @@
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="primary" (click)="fermentationService.onDeleteFermentation(fermentation.id)">
+        <button mat-icon-button *ngIf="userService.userRole() == 'manager'" color="primary"
+          (click)="fermentationService.onDeleteFermentation(fermentation.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
