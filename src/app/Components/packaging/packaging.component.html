@@ -1,0 +1,39 @@
+<div class="tableContainer" *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager'">
+  <p>*You can sort by <strong>Date, Plant, Product, or Campaign</strong> by clicking on the corresponding header.</p>
+  <table>
+    <tr>
+      <th class="tableHeader" (click)="sortTable('date')">Date</th>
+      <th class="tableHeader" (click)="sortTable('plant')">Plant</th>
+      <th class="tableHeader" (click)="sortTable('product')">Product</th>
+      <th class="tableHeader" (click)="sortTable('campaign')">Campaign</th>
+      <th class="tableHeader">Package</th>
+      <th class="tableHeader">Incoming(kg)</th>
+      <th class="tableHeader">Outgoing(kg)</th>
+      <div class="newPackagingButton">
+        <button mat-icon-button color="primary"
+          (click)="packagingService.openDialog(); packagingService.newPackagingSelected=true">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </tr>
+    <tr *ngFor="let packaging of packagingService.packagings">
+      <td class="tableContents">{{ packaging.date | date:'longDate'}}</td>
+      <td class="tableContents">{{ packaging.plant }}</td>
+      <td class="tableContents">{{ packaging.product }}</td>
+      <td class="tableContents">{{ packaging.campaign }}</td>
+      <td class="tableContents">{{ packaging.packages }}</td>
+      <td class="tableContents">{{ packaging.incoming | number}}</td>
+      <td class="tableContents">{{ packaging.outgoing | number}}</td>
+      <td class="icons">
+        <button mat-icon-button color="primary"
+          (click)="packagingService.selectedPackagingId = packaging.id; packagingService.onSelectPackaging(packaging.id); packagingService.openDialog(); ">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="userService.userRole() == 'manager'" color="primary"
+          (click)="packagingService.onDeletePackaging(packaging.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -10,17 +10,22 @@ import { UserService } from 'src/app/auth/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentUser: User =  null;
-  constructor(private userService:UserService, private authService:AuthService){}
+  currentUser: User = null;
+  currentUserRole
+  currentUserDepartment
+  constructor(public userService: UserService, private authService: AuthService) {
+    this.currentUserRole = this.userService.userRole()
+    this.currentUserDepartment = this.userService.userDepartment()
+  }
 
-ngOnInit(): void {
-    this.userService.currentUserSubject.subscribe((user:User)=> {
+  ngOnInit(): void {
+    this.userService.currentUserSubject.subscribe((user: User) => {
       this.currentUser = user;
     })
-}
+  }
 
-onLogout(){
-  this.authService.logout();
-}
+  onLogout() {
+    this.authService.logout();
+  }
 
 }

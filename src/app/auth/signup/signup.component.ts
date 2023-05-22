@@ -17,19 +17,16 @@ export class SignupComponent {
     last_name: new FormControl(''),
     password: new FormControl(''),
     password_confirmation: new FormControl(''),
-
+    department: new FormControl(''),
+    role: new FormControl('Operator')
   })
 
-  constructor(private authService:AuthService, private route:Router){}
+  constructor(private authService: AuthService) { }
 
-  onSubmit(){
-   const blog = this.signupForm.value;
+  onSubmit() {
+    const blog = this.signupForm.value;
 
     this.authService.signup(blog).subscribe(
-      (res:any)=>{
-        if(res.success){
-        }
-      }
     )
   }
 }

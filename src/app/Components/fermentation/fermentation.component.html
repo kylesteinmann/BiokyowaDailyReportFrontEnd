@@ -1,4 +1,6 @@
-<div class="tableContainer">
+<div class="tableContainer"
+  *ngIf="userService.userDepartment() == 'fermentation' || userService.userRole() == 'manager'">
+  <p>*You can sort by <strong>Date, Plant, Product, or Campaign</strong> by clicking on the corresponding header.</p>
   <table>
     <tr>
       <th class="tableHeader" (click)="sortTable('date')">Date</th>
@@ -35,7 +37,8 @@
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="primary" (click)="fermentationService.onDeleteFermentation(fermentation.id)">
+        <button mat-icon-button *ngIf="userService.userRole() == 'manager'" color="primary"
+          (click)="fermentationService.onDeleteFermentation(fermentation.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

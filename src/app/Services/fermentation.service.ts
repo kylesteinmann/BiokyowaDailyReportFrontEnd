@@ -14,6 +14,10 @@ export class FermentationService {
   fermentations: Fermentation[] = []
   selectedFermentationId: string = '';
   dialogRef: any;
+  csvChosen: boolean = false;
+  selectedFile: File;
+
+
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
     this.fermentationForm = new FormGroup({
@@ -83,6 +87,27 @@ export class FermentationService {
     this.dialog.open(FermentationDialogComponent, {
       width: '500px'
     });
+  }
+
+  onCsvFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onCsvSubmit() {
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+
+    this.http.post<any>('http://localhost:3000/fermentations/import', formData)
+      .subscribe(
+        () => {
+          console.log('CSV file submitted successfully!');
+          this.getFermentations();
+        },
+        (error) => {
+          console.error('Error submitting CSV file:', error);
+        }
+      );
   }
 
 }

@@ -1,5 +1,7 @@
-<div class="tableContainer">
+<div class="tableContainer" *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager'">
+  <p>*You can sort by <strong>Date, Plant, Product, or Campaign</strong> by clicking on the corresponding header.</p>
   <table>
+
     <tr>
       <th class="tableHeader" (click)="sortTable('date')">Date</th>
       <th class="tableHeader" (click)="sortTable('plant')">Plant</th>
@@ -39,7 +41,8 @@
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="primary" (click)="extractionService.onDeleteExtraction(extraction.id)">
+        <button mat-icon-button color="primary" *ngIf="userService.userRole() == 'manager'"
+          (click)="extractionService.onDeleteExtraction(extraction.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

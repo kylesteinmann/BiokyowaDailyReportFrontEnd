@@ -1,4 +1,12 @@
-<div class="newFormContainer">
+<form class="csvForm" (submit)="fermentationService.onCsvSubmit()" *ngIf="fermentationService.csvChosen">
+  <input type="file" (change)="this.fermentationService.onCsvFileSelected($event)" />
+  <button mat-raised-button color="primary" type="submit">Upload</button>
+  <button mat-raised-button color="primary" type="button"
+    (click)="fermentationService.csvChosen = !fermentationService.csvChosen">Enter Manually</button>
+
+</form>
+
+<div class="newFormContainer" *ngIf="!fermentationService.csvChosen">
   <form [formGroup]="fermentationService.fermentationForm" (ngSubmit)="fermentationService.onSubmitFermentationForm()">
     <h1>Fermentation Form</h1>
     <div class="formSection">
@@ -63,6 +71,8 @@
         </button>
 
         <button mat-raised-button color="primary" type="button" (click)="onCancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="button"
+          (click)="fermentationService.csvChosen = !fermentationService.csvChosen">Upload CSV</button>
 
       </div>
     </div>

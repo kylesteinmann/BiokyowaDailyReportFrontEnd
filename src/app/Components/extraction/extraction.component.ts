@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ExtractionService } from '../../Services/extraction.service';
+import { UserService } from 'src/app/auth/user.service';
 
 @Component({
   selector: 'app-extraction',
@@ -8,7 +9,7 @@ import { ExtractionService } from '../../Services/extraction.service';
 })
 export class ExtractionComponent {
 
-  constructor(public extractionService: ExtractionService) {
+  constructor(public extractionService: ExtractionService, public userService: UserService) {
 
   }
 
