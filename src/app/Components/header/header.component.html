@@ -7,11 +7,16 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/fermentation">Fermentaiton Report</button>
-  <button mat-menu-item routerLink="/extraction">Extraction Report</button>
-  <button mat-menu-item routerLink="/packaging">Packaging Report</button>
-  <button mat-menu-item routerLink="/summary">Reports Summary</button>
+  <button mat-menu-item
+    *ngIf="userService.userDepartment() == 'fermentation' || userService.userDepartment() == 'manager'"
+    routerLink="/fermentation">Fermentaiton Report</button>
+  <button mat-menu-item
+    *ngIf="userService.userDepartment() == 'extraction' || userService.userDepartment() == 'manager'"
+    routerLink="/extraction">Extraction Report</button>
+  <button mat-menu-item *ngIf="userService.userDepartment() == 'packaging' || userService.userDepartment() == 'manager'"
+    routerLink="/packaging">Packaging Report</button>
+  <button *ngIf="currentUser" mat-menu-item routerLink="/summary">Reports Summary</button>
   <button mat-menu-item *ngIf="!currentUser" routerLink="/login">Login</button>
-  <button mat-menu-item *ngIf="!currentUser" routerLink="/signup">Signup</button>
+  <button mat-menu-item *ngIf="userService.userDepartment() == 'manager'" routerLink="/signup">Signup</button>
   <button mat-menu-item *ngIf="currentUser" (click)="onLogout()">Log Out</button>
 </mat-menu>

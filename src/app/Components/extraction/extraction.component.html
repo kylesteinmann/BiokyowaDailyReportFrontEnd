@@ -1,4 +1,5 @@
-<div class="tableContainer">
+<div class="tableContainer" *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager'">
+  >
   <table>
     <tr>
       <th class="tableHeader" (click)="sortTable('date')">Date</th>

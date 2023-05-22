@@ -8,20 +8,21 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  constructor(private http:HttpClient, private route:Router, private userService:UserService) { }
+  constructor(private http: HttpClient, private route: Router, private userService: UserService) { }
 
-  signup(blog){
+  signup(blog) {
     return this.http.post("http://localhost:3000/api/v1/users/create", blog)
   }
 
-  login(user){
+  login(user) {
     return this.http.post("http://localhost:3000/api/v1/users/login", user)
+
   }
 
-  autoSignIn(){
+  autoSignIn() {
     // get Token from browser
     const token = this.getToken();
-    if(!token){
+    if (!token) {
       return;
     }
     // send request to get user info
@@ -30,8 +31,8 @@ export class AuthService {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
-    }).subscribe((res:any)=>{
-      if(res.success){
+    }).subscribe((res: any) => {
+      if (res.success) {
         console.log(res.payload.user)
         this.userService.setCurrentUser(
           res.payload.user
@@ -45,32 +46,33 @@ export class AuthService {
 
   }
 
-  logout(){
+  logout() {
     const token = this.getToken();
 
     this.http.delete("http://localhost:3000/api/v1/users/logout", {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
-    }).subscribe((res:any)=>{
-      if(res.success){
-      this.removeToken();
-      this.userService.setCurrentUser(null);
-      this.route.navigate(['/login'])
+    }).subscribe((res: any) => {
+      if (res.success) {
+        this.removeToken();
+        this.userService.setCurrentUser(null);
+        this.route.navigate(['/login'])
+
       }
     }
-   )
+    )
   }
 
-  getToken(){
+  getToken() {
     return JSON.parse(localStorage.getItem('token'))
   }
 
-  setToken(token){
+  setToken(token) {
     localStorage.setItem('token', JSON.stringify(token))
   }
 
-  removeToken(){
+  removeToken() {
     localStorage.removeItem('token')
   }
 

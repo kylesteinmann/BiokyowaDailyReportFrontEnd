@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SummaryService } from 'src/app/Services/summary.service';
 import { BaseChartDirective } from 'ng2-charts';
+import { UserService } from 'src/app/auth/user.service';
 
 @Component({
   selector: 'app-summary',
@@ -10,7 +11,7 @@ import { BaseChartDirective } from 'ng2-charts';
 export class SummaryComponent implements OnInit {
   @ViewChild(BaseChartDirective, { static: false }) chart!: BaseChartDirective;
 
-  constructor(public summaryService: SummaryService) {
+  constructor(public summaryService: SummaryService, public userService: UserService) {
   }
 
   ngOnInit(): void {

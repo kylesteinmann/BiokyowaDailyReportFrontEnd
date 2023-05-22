@@ -180,4 +180,5 @@ export class SummaryService {
       }
     });
   }
+
 }

@@ -7,6 +7,7 @@ import { FermentationDialogComponent } from './Components/fermentation-dialog/fe
 import { PackagingDialogComponent } from './Components/packaging-dialog/packaging-dialog.component';
 import { SummaryComponent } from './Components/summary/summary.component';
 import { HeaderComponent } from './Components/header/header.component';
+import { LoginComponent } from './auth/login/login.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,8 +27,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
-import { LoginComponent } from './auth/login/login.component';
-
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { LoginComponent } from './auth/login/login.component';
     MatToolbarModule,
     MatMenuModule,
     NgChartsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PackagingService } from '../../Services/packaging.service';
+import { UserService } from 'src/app/auth/user.service';
 
 @Component({
   selector: 'app-packaging',
@@ -8,7 +9,7 @@ import { PackagingService } from '../../Services/packaging.service';
 })
 export class PackagingComponent {
 
-  constructor(public packagingService: PackagingService) {
+  constructor(public packagingService: PackagingService, public userService: UserService) {
 
   }
 

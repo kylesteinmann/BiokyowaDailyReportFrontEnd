@@ -1,4 +1,4 @@
-<div class="radialContainer">
+<div class="radialContainer" *ngIf="userService.userRole() == 'manager'">
   <h3>Categories: </h3>
   <div>
     <label>
@@ -17,32 +17,39 @@
     </label>
   </div>
 </div>
+
 <div class="container">
-  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'fermentation'">>
-    <h1>Fermentation</h1>
-    <div class="chartsContainer">
-      <div style="display: block;">
-        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationLevelChartData"
-          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-        </canvas>
-      </div>
+  <div>
+    <div class="categoryContainer"
+      *ngIf="userService.userDepartment() == 'fermentation' || userService.userRole() == 'manager'">
+      <h1>Fermentation</h1>
+      <div class="chartsContainer">
+        <div style="display: block;">
+          <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationLevelChartData"
+            [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+          </canvas>
+        </div>
 
-      <div style="display: block;">
-        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationWeightChartData"
-          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-        </canvas>
-      </div>
+        <div style="display: block;">
+          <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationWeightChartData"
+            [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
+          </canvas>
+        </div>
 
-      <div style="display: block;">
-        <canvas baseChart width="400" height="200" [type]="'line'" [data]="summaryService.fermentationReceivedChartData"
-          [options]="summaryService.ChartOptions" [legend]="summaryService.ChartLegend">
-        </canvas>
-      </div>
+        <div style="display: block;">
+          <canvas baseChart width="400" height="200" [type]="'line'"
+            [data]="summaryService.fermentationReceivedChartData" [options]="summaryService.ChartOptions"
+            [legend]="summaryService.ChartLegend">
+          </canvas>
+        </div>
 
+      </div>
     </div>
   </div>
 
-  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'extraction'">
+
+  <div class="categoryContainer"
+    *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager'">
     <h1>Extraction</h1>
     <div class="chartsContainer">
       <div style="display: block;">
@@ -78,7 +85,10 @@
     </div>
   </div>
 
-  <div class="categoryContainer" *ngIf="summaryService.selectedOption === 'packaging'">
+
+
+  <div class="categoryContainer"
+    *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager'">
     <h1>Packaging</h1>
     <div class="chartsContainer">
 

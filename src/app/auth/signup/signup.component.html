@@ -30,13 +30,31 @@
       </mat-form-field>
     </div>
 
-    <div class=signUpButton>
-      <button mat-raised-button color="primary" mat-raised-button type="submit" class="submitButton">Sign Up</button>
+    <div class="formSection">
+
+
+      <mat-radio-group aria-label="Choose a department:" formControlName="department" id="department">
+        <mat-label><strong>Choose a department:</strong></mat-label>
+        <mat-radio-button value="fermentation">Fermentation</mat-radio-button>
+        <mat-radio-button value="extraction">Extraction</mat-radio-button>
+        <mat-radio-button value="packaging">Packaging</mat-radio-button>
+      </mat-radio-group>
+
+
+
+    </div>
+    <div class="formSection">
+      <mat-radio-group aria-label="Choose a role:" formControlName="role" id="role">
+        <mat-label><strong>Choose a role:</strong></mat-label>
+        <mat-radio-button value="manager">Manager</mat-radio-button>
+        <mat-radio-button value="supervisor">Supervisor</mat-radio-button>
+        <mat-radio-button value="operator">Operator</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="signUpButton">
+      <button mat-raised-button color="primary" type="submit" class="submitButton">Sign Up</button>
     </div>
 
-    <div class="text-center2">
-      <p>Already have an account? <a href="/login"> Login</a></p>
-    </div>
 
   </form>
 </div>
