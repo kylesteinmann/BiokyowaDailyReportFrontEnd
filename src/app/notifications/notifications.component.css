@@ -1,0 +1,13 @@
+.text-center{
+  display: flex;
+  justify-content: center;
+  padding-top: 4em;
+}
+
+.notificationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

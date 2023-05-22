@@ -27,6 +27,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
 import { LoginComponent } from './auth/login/login.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LoginComponent } from './auth/login/login.component';
     FermentationComponent,
     FermentationDialogComponent,
     SummaryComponent,
-    LoginComponent
+    LoginComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

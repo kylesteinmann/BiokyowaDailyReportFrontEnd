@@ -28,7 +28,6 @@ export class SignupComponent {
     this.authService.signup(blog).subscribe(
       (res:any)=>{
         if(res.success){
-          this.route.navigate(["/summary"])
         }
       }
     )
