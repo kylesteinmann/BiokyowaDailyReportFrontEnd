@@ -16,5 +16,5 @@
   <button *ngIf="currentUser" mat-menu-item routerLink="/summary">Reports Summary</button>
   <button mat-menu-item *ngIf="!currentUser" routerLink="/login">Login</button>
   <button mat-menu-item *ngIf="userService.userRole() == 'manager'" routerLink="/signup">Signup</button>
-  <button mat-menu-item *ngIf="currentUser" (click)="onLogout()">Log Out</button>
+  <button mat-menu-item *ngIf="currentUser" (click)="onLogout();" routerLink="login">Log Out</button>
 </mat-menu>

@@ -1,5 +1,5 @@
 <div class="tableContainer" *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager'">
-
+  <p>*You can sort by <strong>Date, Plant, Product, or Campaign</strong> by clicking on the corresponding header.</p>
   <table>
     <tr>
       <th class="tableHeader" (click)="sortTable('date')">Date</th>

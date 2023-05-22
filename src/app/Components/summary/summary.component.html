@@ -21,7 +21,7 @@
 <div class="container">
   <div>
     <div class="categoryContainer"
-      *ngIf="userService.userDepartment() == 'fermentation' || userService.userRole() == 'manager'">
+      *ngIf="userService.userDepartment() == 'fermentation' || userService.userRole() == 'manager' && summaryService.selectedOption == 'fermentation'">
       <h1>Fermentation</h1>
       <div class="chartsContainer">
         <div style="display: block;">
@@ -49,7 +49,7 @@
 
 
   <div class="categoryContainer"
-    *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager'">
+    *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager' && summaryService.selectedOption == 'extraction'">
     <h1>Extraction</h1>
     <div class="chartsContainer">
       <div style="display: block;">
@@ -88,7 +88,7 @@
 
 
   <div class="categoryContainer"
-    *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager'">
+    *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager' && summaryService.selectedOption == 'packaging'">
     <h1>Packaging</h1>
     <div class="chartsContainer">
 
