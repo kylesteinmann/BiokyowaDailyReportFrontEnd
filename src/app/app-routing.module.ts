@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'fermentation', component: FermentationComponent },
   { path: 'summary', component: SummaryComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'notifications', component: NotificationsComponent}
+  { path: 'notifications', component: NotificationsComponent},
   { path: 'packaging', component: PackagingComponent },
 ];
 

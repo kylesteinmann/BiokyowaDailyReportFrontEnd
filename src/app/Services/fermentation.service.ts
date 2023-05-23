@@ -4,6 +4,7 @@ import { Fermentation } from '../Models/fermentation';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { FermentationDialogComponent } from '../Components/fermentation-dialog/fermentation-dialog.component';
+import { NotificationsService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class FermentationService {
 
 
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {
+  constructor(private http: HttpClient, public dialog: MatDialog, private notificationsService: NotificationsService) {
     this.fermentationForm = new FormGroup({
 
       date: new FormControl(),
@@ -48,16 +49,18 @@ export class FermentationService {
         .subscribe((data: any) => {
           this.fermentations.push(data);
           this.newFermentationSelected = false;
-          this.dialog.closeAll()
-        });
+          this.dialog.closeAll();
+        })
+        this.notificationsService.pushNotifications();
     } else {
       this.http
         .put('http://localhost:3000/fermentations/' + this.selectedFermentationId, this.fermentationForm.value)
         .subscribe(() => {
           this.getFermentations();
           this.newFermentationSelected = false;
-          this.dialog.closeAll()
-        });
+          this.dialog.closeAll();
+        })
+        this.notificationsService.pushNotifications();
     }
     this.fermentationForm.reset()
   }
