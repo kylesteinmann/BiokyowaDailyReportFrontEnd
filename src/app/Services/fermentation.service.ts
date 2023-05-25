@@ -4,7 +4,7 @@ import { Fermentation } from '../Models/fermentation';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { FermentationDialogComponent } from '../Components/fermentation-dialog/fermentation-dialog.component';
-import { NotificationsService } from './notification.service';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,11 @@ export class FermentationService {
   fermentations: Fermentation[] = []
   selectedFermentationId: string = '';
   dialogRef: any;
-  csvChosen: boolean = false;
-  selectedFile: File;
 
 
 
-  constructor(private http: HttpClient, public dialog: MatDialog, private notificationsService: NotificationsService) {
+
+  constructor(private http: HttpClient, public dialog: MatDialog, private notificationService: NotificationService) {
     this.fermentationForm = new FormGroup({
 
       date: new FormControl(),
@@ -51,7 +50,7 @@ export class FermentationService {
           this.newFermentationSelected = false;
           this.dialog.closeAll();
         })
-        this.notificationsService.pushNotifications();
+      this.notificationService.sendNotifications({ message: "New Fermentation Added" });
     } else {
       this.http
         .put('http://localhost:3000/fermentations/' + this.selectedFermentationId, this.fermentationForm.value)
@@ -60,22 +59,24 @@ export class FermentationService {
           this.newFermentationSelected = false;
           this.dialog.closeAll();
         })
-        this.notificationsService.pushNotifications();
+      this.notificationService.sendNotifications({ message: "Fermentation Edited" });
     }
     this.fermentationForm.reset()
   }
 
-  onEditFermentation(fermentationId: string) {
-    this.selectedFermentationId = fermentationId;
-    this.http.put('http://localhost:3000/fermentations/' + fermentationId, this.fermentationForm.value).subscribe(() => {
-      this.getFermentations();
-      this.newFermentationSelected = false;
-    })
-  }
+  // onEditFermentation(fermentationId: string) {
+  //   this.selectedFermentationId = fermentationId;
+  //   this.http.put('http://localhost:3000/fermentations/' + fermentationId, this.fermentationForm.value).subscribe(() => {
+  //     this.getFermentations();
+  //     this.newFermentationSelected = false;
+  //   })
+  // }
 
   onDeleteFermentation(fermentationId: string) {
     this.http.delete<Fermentation>('http://localhost:3000/fermentations/' + fermentationId).subscribe(() => {
       this.getFermentations();
+      this.notificationService.sendNotifications({ message: "Fermentation Deleted" });
+
     })
   }
 
@@ -92,25 +93,8 @@ export class FermentationService {
     });
   }
 
-  onCsvFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
 
-  onCsvSubmit() {
 
-    const formData = new FormData();
-    formData.append('file', this.selectedFile, this.selectedFile.name);
 
-    this.http.post<any>('http://localhost:3000/fermentations/import', formData)
-      .subscribe(
-        () => {
-          console.log('CSV file submitted successfully!');
-          this.getFermentations();
-        },
-        (error) => {
-          console.error('Error submitting CSV file:', error);
-        }
-      );
-  }
 
 }

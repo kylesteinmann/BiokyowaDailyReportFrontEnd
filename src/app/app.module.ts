@@ -8,6 +8,7 @@ import { PackagingDialogComponent } from './Components/packaging-dialog/packagin
 import { SummaryComponent } from './Components/summary/summary.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { LoginComponent } from './auth/login/login.component';
+import { NotificationsComponent } from './Components/notifications/notifications.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,8 +28,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgChartsModule } from 'ng2-charts';
-import { NotificationsComponent } from './notifications/notifications.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatRadioModule } from '@angular/material/radio';
     LoginComponent,
     NotificationsComponent,
     HeaderComponent,
-    SignupComponent
+    SignupComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatMenuModule,
     NgChartsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

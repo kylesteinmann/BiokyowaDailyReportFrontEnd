@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ExtractionService } from '../../Services/extraction.service';
-import { UserService } from 'src/app/auth/user.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-extraction',

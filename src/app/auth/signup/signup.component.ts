@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

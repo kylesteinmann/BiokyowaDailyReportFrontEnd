@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { User } from 'src/app/Models/user.model';
-import { AuthService } from 'src/app/auth/auth.service';
-import { UserService } from 'src/app/auth/user.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-header',

@@ -1,13 +1,13 @@
-.text-center{
-  display: flex;
-  justify-content: center;
-  padding-top: 4em;
-}
-
-.notificationContainer {
+.container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
+
+.notificationContainer {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+

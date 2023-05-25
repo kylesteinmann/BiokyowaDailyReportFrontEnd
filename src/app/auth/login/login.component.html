@@ -1,27 +1,22 @@
-
 <h1 class="text-center">Log In</h1>
-<div class = "loginContainer">
+<div class="loginContainer">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="formSection">
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email"
-        id="email">
+        <input matInput formControlName="email" id="email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput type= "password" formControlName="password"
-        id="password">
+        <input matInput type="password" formControlName="password" id="password">
       </mat-form-field>
     </div>
 
-    <div class = loginButton>
+    <div class=loginButton>
       <button mat-raised-button color="primary" mat-raised-button type="submit" class="submitButton">Login</button>
     </div>
   </form>
 
-  <div class = "text-center2">
-    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-  </div>
+
 </div>

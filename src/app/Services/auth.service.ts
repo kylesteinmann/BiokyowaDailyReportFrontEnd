@@ -33,11 +33,11 @@ export class AuthService {
       }
     }).subscribe((res: any) => {
       if (res.success) {
-        console.log(res.payload.user)
+
         this.userService.setCurrentUser(
           res.payload.user
         )
-        console.log(res);
+
         // navigate to summary
         this.route.navigate(['/summary'])
       }

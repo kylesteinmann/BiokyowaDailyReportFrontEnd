@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-card color="primary">
+    <mat-card-header>
+      <mat-card-title><strong>Notifications</strong></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="notificationContainer">
+      <p *ngFor="let notification of notificationService.notifications">
+        {{ notification.created_at | date:'full' }} - {{ notification.message }}
+      </p>
+    </mat-card-content>
+
+
+  </mat-card>
+</div>

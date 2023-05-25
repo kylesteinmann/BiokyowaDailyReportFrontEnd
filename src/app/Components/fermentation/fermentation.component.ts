@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FermentationService } from 'src/app/Services/fermentation.service';
-import { UserService } from 'src/app/auth/user.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-fermentation',

@@ -4,6 +4,8 @@ import { Packaging } from '../Models/packaging';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { PackagingDialogComponent } from '../Components/packaging-dialog/packaging-dialog.component';
+import { NotificationService } from './notification.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class PackagingService {
   selectedPackagingId: string = '';
   dialogRef: any;
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {
+  constructor(private http: HttpClient, public dialog: MatDialog, public notificationService: NotificationService) {
     this.packagingForm = new FormGroup({
 
       date: new FormControl(),
@@ -44,6 +46,7 @@ export class PackagingService {
           this.packagings.push(data);
           this.newPackagingSelected = false;
           this.dialog.closeAll()
+          this.notificationService.sendNotifications({ message: "New Packaging added" });
         });
     } else {
       this.http
@@ -52,24 +55,26 @@ export class PackagingService {
           this.getPackagings();
           this.newPackagingSelected = false;
           this.dialog.closeAll()
+          this.notificationService.sendNotifications({ message: "Packaging Edited" });
         });
     }
     this.packagingForm.reset()
   }
 
 
-  onEditPackaging(packagingId: string) {
-    this.selectedPackagingId = packagingId;
-    this.http.put('http://localhost:3000/packagings/' + packagingId, this.packagingForm.value).subscribe(() => {
-      this.getPackagings();
-      this.newPackagingSelected = false;
-    })
-  }
+  // onEditPackaging(packagingId: string) {
+  //   this.selectedPackagingId = packagingId;
+  //   this.http.put('http://localhost:3000/packagings/' + packagingId, this.packagingForm.value).subscribe(() => {
+  //     this.getPackagings();
+  //     this.newPackagingSelected = false;
+  //   })
+  // }
 
 
   onDeletePackaging(packagingId: string) {
     this.http.delete<Packaging>('http://localhost:3000/packagings/' + packagingId).subscribe((data: any) => {
       this.getPackagings();
+      this.notificationService.sendNotifications({ message: "Packaging Deleted" });
     })
   }
 

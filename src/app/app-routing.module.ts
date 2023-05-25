@@ -6,7 +6,7 @@ import { FermentationComponent } from 'src/app/Components/fermentation/fermentat
 import { SummaryComponent } from './Components/summary/summary.component';
 import { PackagingComponent } from './Components/packaging/packaging.component';
 import { LoginComponent } from './auth/login/login.component';
-import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationsComponent } from './Components/notifications/notifications.component';
 
 const routes: Routes = [
   { path: 'extraction', component: ExtractionComponent },
@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent },
   { path: 'fermentation', component: FermentationComponent },
   { path: 'summary', component: SummaryComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'notifications', component: NotificationsComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'notifications', component: NotificationsComponent },
   { path: 'packaging', component: PackagingComponent },
 ];
 

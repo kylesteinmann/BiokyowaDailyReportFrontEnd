@@ -16,7 +16,7 @@ export class UserService {
     this.currentUserSubject.next(user);
     this.currentUserRole = user.role;
     this.currentUserDepartment = user.department;
-    console.log(this.userRole, this.userDepartment);
+
 
   }
 
