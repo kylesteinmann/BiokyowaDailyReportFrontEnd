@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "biokyowacapstone": {
+      "hosting": {
+        "BiokyowaDailyReportFrontEnd": [
+          "biokyowacapstone"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "biokyowacapstone"
+  }
+}

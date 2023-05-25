@@ -92,6 +92,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "BiokyowaDailyReportFrontEnd:build:production",
+            "firebaseProject": "biokyowacapstone",
+            "firebaseHostingSite": "biokyowacapstone"
+          }
         }
       }
     }
