@@ -8,7 +8,7 @@
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item *ngIf="userService.userDepartment() == 'fermentation' || userService.userRole() == 'manager'"
-    routerLink="/fermentation">Fermentaiton Report</button>
+    routerLink="/fermentation">Fermentation Report</button>
   <button mat-menu-item *ngIf="userService.userDepartment() == 'extraction' || userService.userRole() == 'manager'"
     routerLink="/extraction">Extraction Report</button>
   <button mat-menu-item *ngIf="userService.userDepartment() == 'packaging' || userService.userRole() == 'manager'"

@@ -76,7 +76,7 @@ export class ExtractionService {
   onDeleteExtraction(extractionId: string) {
     this.http.delete<Extraction>('http://localhost:3000/extractions/' + extractionId).subscribe((data: any) => {
       this.getExtractions();
-      this.notificationService.sendNotifications({ message: " Extraction Edited" });
+      this.notificationService.sendNotifications({ message: " Extraction Deleted" });
     })
   }
 
