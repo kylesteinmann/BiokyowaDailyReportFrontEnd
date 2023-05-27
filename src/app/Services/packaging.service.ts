@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { PackagingDialogComponent } from '../Components/packaging-dialog/packaging-dialog.component';
 import { NotificationService } from './notification.service';
+import { ApiUrlService } from './api-url.service';
 
 
 @Injectable({
@@ -17,7 +18,7 @@ export class PackagingService {
   selectedPackagingId: string = '';
   dialogRef: any;
 
-  constructor(private http: HttpClient, public dialog: MatDialog, public notificationService: NotificationService) {
+  constructor(private http: HttpClient, public dialog: MatDialog, public notificationService: NotificationService, public apiUrlService: ApiUrlService) {
     this.packagingForm = new FormGroup({
 
       date: new FormControl(),
@@ -33,7 +34,7 @@ export class PackagingService {
   }
 
   getPackagings() {
-    this.http.get<Packaging>('http://localhost:3000/packagings').subscribe((data: any) => {
+    this.http.get<Packaging>(this.apiUrlService.apiUrl + 'packagings').subscribe((data: any) => {
       this.packagings = data;
     })
   }
@@ -41,7 +42,7 @@ export class PackagingService {
   onSubmitPackagingForm() {
     if (this.newPackagingSelected) {
       this.http
-        .post<Packaging>('http://localhost:3000/packagings', this.packagingForm.value)
+        .post<Packaging>(this.apiUrlService.apiUrl + 'packagings', this.packagingForm.value)
         .subscribe((data: any) => {
           this.packagings.push(data);
           this.newPackagingSelected = false;
@@ -50,7 +51,7 @@ export class PackagingService {
         });
     } else {
       this.http
-        .put('http://localhost:3000/packagings/' + this.selectedPackagingId, this.packagingForm.value)
+        .put(this.apiUrlService.apiUrl + 'packagings/' + this.selectedPackagingId, this.packagingForm.value)
         .subscribe(() => {
           this.getPackagings();
           this.newPackagingSelected = false;
@@ -72,14 +73,14 @@ export class PackagingService {
 
 
   onDeletePackaging(packagingId: string) {
-    this.http.delete<Packaging>('http://localhost:3000/packagings/' + packagingId).subscribe((data: any) => {
+    this.http.delete<Packaging>(this.apiUrlService.apiUrl + 'packagings/' + packagingId).subscribe((data: any) => {
       this.getPackagings();
       this.notificationService.sendNotifications({ message: "Packaging Deleted" });
     })
   }
 
   onSelectPackaging(id: string) {
-    this.http.get<Packaging>('http://localhost:3000/packagings/' + id).subscribe((data: Packaging) => {
+    this.http.get<Packaging>(this.apiUrlService.apiUrl + 'packagings/' + id).subscribe((data: Packaging) => {
       this.packagingForm.patchValue(data);
       this.newPackagingSelected = false;
     });

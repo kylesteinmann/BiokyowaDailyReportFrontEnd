@@ -2,20 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
+import { ApiUrlService } from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private route: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private route: Router, private userService: UserService, public apiUrlService: ApiUrlService) { }
 
   signup(blog) {
-    return this.http.post("http://localhost:3000/api/v1/users/create", blog)
+    return this.http.post(this.apiUrlService.apiUrl + "api/v1/users/create", blog)
   }
 
   login(user) {
-    return this.http.post("http://localhost:3000/api/v1/users/login", user)
+    return this.http.post(this.apiUrlService.apiUrl + "api/v1/users/login", user)
 
   }
 
@@ -27,7 +28,7 @@ export class AuthService {
     }
     // send request to get user info
 
-    this.http.get("http://localhost:3000/api/v1/users/me", {
+    this.http.get(this.apiUrlService.apiUrl + "api/v1/users/me", {
       headers: {
         Authorization: `Bearer ${token.value}`
       }
@@ -49,7 +50,7 @@ export class AuthService {
   logout() {
     const token = this.getToken();
 
-    this.http.delete("http://localhost:3000/api/v1/users/logout", {
+    this.http.delete(this.apiUrlService.apiUrl + "api/v1/users/logout", {
       headers: {
         Authorization: `Bearer ${token.value}`
       }

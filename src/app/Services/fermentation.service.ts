@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { FermentationDialogComponent } from '../Components/fermentation-dialog/fermentation-dialog.component';
 import { NotificationService } from './notification.service';
+import { ApiUrlService } from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class FermentationService {
 
 
 
-  constructor(private http: HttpClient, public dialog: MatDialog, private notificationService: NotificationService) {
+  constructor(private http: HttpClient, public dialog: MatDialog, private notificationService: NotificationService, public apiUrlService: ApiUrlService) {
     this.fermentationForm = new FormGroup({
 
       date: new FormControl(),
@@ -36,7 +37,7 @@ export class FermentationService {
     this.getFermentations();
   }
   getFermentations() {
-    this.http.get<Fermentation>('http://localhost:3000/fermentations').subscribe((data: any) => {
+    this.http.get<Fermentation>(this.apiUrlService.apiUrl + 'fermentations').subscribe((data: any) => {
       this.fermentations = data;
     })
   }
@@ -44,7 +45,7 @@ export class FermentationService {
   onSubmitFermentationForm() {
     if (this.newFermentationSelected) {
       this.http
-        .post<Fermentation>('http://localhost:3000/fermentations', this.fermentationForm.value)
+        .post<Fermentation>(this.apiUrlService.apiUrl + 'fermentations', this.fermentationForm.value)
         .subscribe((data: any) => {
           this.fermentations.push(data);
           this.newFermentationSelected = false;
@@ -53,7 +54,7 @@ export class FermentationService {
       this.notificationService.sendNotifications({ message: "New Fermentation Added" });
     } else {
       this.http
-        .put('http://localhost:3000/fermentations/' + this.selectedFermentationId, this.fermentationForm.value)
+        .put(this.apiUrlService.apiUrl + 'fermentations/' + this.selectedFermentationId, this.fermentationForm.value)
         .subscribe(() => {
           this.getFermentations();
           this.newFermentationSelected = false;
@@ -73,7 +74,7 @@ export class FermentationService {
   // }
 
   onDeleteFermentation(fermentationId: string) {
-    this.http.delete<Fermentation>('http://localhost:3000/fermentations/' + fermentationId).subscribe(() => {
+    this.http.delete<Fermentation>(this.apiUrlService.apiUrl + 'fermentations/' + fermentationId).subscribe(() => {
       this.getFermentations();
       this.notificationService.sendNotifications({ message: "Fermentation Deleted" });
 
@@ -81,7 +82,7 @@ export class FermentationService {
   }
 
   onSelectFermentation(id: string) {
-    this.http.get<Fermentation>('http://localhost:3000/fermentations/' + id).subscribe((data: Fermentation) => {
+    this.http.get<Fermentation>(this.apiUrlService.apiUrl + 'fermentations/' + id).subscribe((data: Fermentation) => {
       this.fermentationForm.patchValue(data);
       this.newFermentationSelected = false;
     });

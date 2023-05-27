@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ExtractionDialogComponent } from '../Components/extraction-dialog/extraction-dialog.component';
 import { NotificationService } from './notification.service';
+import { ApiUrlService } from './api-url.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,11 @@ export class ExtractionService {
   selectedExtractionId: string = '';
   dialogRef: any;
 
-  constructor(private http: HttpClient, public dialog: MatDialog, public notificationService: NotificationService) {
+  constructor(private http: HttpClient,
+    public dialog: MatDialog,
+    public notificationService: NotificationService,
+    public apiUrlService: ApiUrlService) {
+
     this.extractionForm = new FormGroup({
       date: new FormControl(),
       plant: new FormControl(),
@@ -34,7 +39,7 @@ export class ExtractionService {
   }
 
   getExtractions() {
-    this.http.get<Extraction>('http://localhost:3000/extractions').subscribe((data: any) => {
+    this.http.get<Extraction>(this.apiUrlService.apiUrl + 'extractions').subscribe((data: any) => {
       this.extractions = data;
     })
   }
@@ -42,7 +47,7 @@ export class ExtractionService {
   onSubmitExtractionForm() {
     if (this.newExtractionSelected) {
       this.http
-        .post<Extraction>('http://localhost:3000/extractions', this.extractionForm.value)
+        .post<Extraction>(this.apiUrlService.apiUrl + 'extractions', this.extractionForm.value)
         .subscribe((data: any) => {
 
 
@@ -54,7 +59,7 @@ export class ExtractionService {
         });
     } else {
       this.http
-        .put('http://localhost:3000/extractions/' + this.selectedExtractionId, this.extractionForm.value)
+        .put(this.apiUrlService.apiUrl + 'extractions/' + this.selectedExtractionId, this.extractionForm.value)
         .subscribe(() => {
           this.getExtractions();
           this.newExtractionSelected = false;
@@ -74,14 +79,14 @@ export class ExtractionService {
   // }
 
   onDeleteExtraction(extractionId: string) {
-    this.http.delete<Extraction>('http://localhost:3000/extractions/' + extractionId).subscribe((data: any) => {
+    this.http.delete<Extraction>(this.apiUrlService.apiUrl + 'extractions/' + extractionId).subscribe((data: any) => {
       this.getExtractions();
       this.notificationService.sendNotifications({ message: " Extraction Deleted" });
     })
   }
 
   onSelectExtraction(id: string) {
-    this.http.get<Extraction>('http://localhost:3000/extractions/' + id).subscribe((data: Extraction) => {
+    this.http.get<Extraction>(this.apiUrlService.apiUrl + 'extractions/' + id).subscribe((data: Extraction) => {
       this.extractionForm.patchValue(data);
       this.newExtractionSelected = false;
     });
