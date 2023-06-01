@@ -20,7 +20,8 @@ export class NotificationService {
   }
 
   sendNotifications(message: Notification) {
-    return this.http.post(this.apiUrl, message).subscribe()
+    return this.http.post(this.apiUrl, message).subscribe(() =>
+      this.getNotifications())
   }
 
 }
